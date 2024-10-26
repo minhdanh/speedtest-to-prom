@@ -21,7 +21,7 @@ PROM_USERNAME=<basic auth username>
 PROM_PASSWORD=<basic auth password>
 ```
 
-### Sample metrics
+### Available Metrics
 
 | Metric                         | Description                  | Labels                          |
 | ------------------------------ | ---------------------------- | ------------------------------- |
@@ -34,7 +34,7 @@ PROM_PASSWORD=<basic auth password>
 
 All metrics include base labels: `isp`, `result_id`, `result_url`, `server_id`, and `server_name`.
 
-### Dashboard
+### Grafana Dashboard
 
 ![Dashboard](/grafana-dashboard.png)
 
