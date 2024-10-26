@@ -4,11 +4,8 @@ Perform a speedtest and export results to a remote Prometheus server.
 
 ### Install speedtest client
 
-See: https://www.speedtest.net/apps/cli#ubuntu
-
-```
-wget https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-armhf.tgz
-```
+Should install Speedtest CLI is maintained by the Ookla team.
+See: https://www.speedtest.net/apps/cli
 
 ### How to use
 
@@ -28,6 +25,10 @@ speedtest -f json | ./speedtest-to-prom
 | `speedtest_packet_loss`        | Percentage of packet loss    |                                 |
 
 All metrics include base labels: `isp`, `result_id`, `result_url`, `server_id`, and `server_name`.
+
+### Dashboard
+
+![Dashboard](/grafana-dashboard.png)
 
 ### Development
 
