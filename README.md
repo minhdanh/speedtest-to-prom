@@ -1,16 +1,26 @@
-### speedtest-to-prom
+## speedtest-to-prom
 
 Perform a speedtest and export results to a remote Prometheus server.
 
-### Install speedtest client
+### Install Speedtest CLI
 
 Should install Speedtest CLI is maintained by the Ookla team.
 See: https://www.speedtest.net/apps/cli
 
-### How to use
+### Usage
+
+Set up a cron job like this:
 
 ```
 speedtest -f json | ./speedtest-to-prom
+```
+
+The following environment variables are required for `speedtest-to-prom` to function correctly:
+
+```
+PROM_URL=https://<prometheus hostname>/api/v1/write
+PROM_USERNAME=<basic auth username>
+PROM_PASSWORD=<basic auth password>
 ```
 
 ### Sample metrics
