@@ -2,14 +2,12 @@
 
 Perform a speedtest and export results to a remote Prometheus server.
 
-### Install Speedtest CLI
-
-Should install Speedtest CLI is maintained by the Ookla team.
-See: https://www.speedtest.net/apps/cli
-
 ### Usage
 
-Set up a cron job like this:
+First install Speedtest CLI is maintained by the Ookla team.
+See: https://www.speedtest.net/apps/cli
+
+Then set up a cron job like this:
 
 ```
 speedtest -f json | ./speedtest-to-prom
