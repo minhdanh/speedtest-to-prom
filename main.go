@@ -21,7 +21,6 @@ import (
 )
 
 // SpeedTestResult represents the JSON structure
-// SpeedTestResult represents the JSON structure
 type SpeedTestResult struct {
 	Ping struct {
 		Jitter  float64 `json:"jitter"`
