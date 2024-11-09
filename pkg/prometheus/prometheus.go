@@ -18,7 +18,7 @@ type MetricValue struct {
 	Labels map[string]string
 }
 
-func PushPrometheusMetrics(prometheusUrl, promUsername, promPassword string, metrics map[string][]MetricValue, labels []*pb.Label) error {
+func PushPrometheusMetrics(promUrl, promUsername, promPassword string, metrics map[string][]MetricValue, labels []*pb.Label) error {
 	credentials := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", promUsername, promPassword)))
 	timestamp := time.Now().UnixMilli()
 
@@ -70,7 +70,7 @@ func PushPrometheusMetrics(prometheusUrl, promUsername, promPassword string, met
 	compressed := snappy.Encode(nil, data)
 
 	// Send request
-	req, err := http.NewRequest("POST", prometheusUrl, bytes.NewReader(compressed))
+	req, err := http.NewRequest("POST", promUrl, bytes.NewReader(compressed))
 	if err != nil {
 		return fmt.Errorf("failed to create request: %v", err)
 	}
