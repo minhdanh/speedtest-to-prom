@@ -176,13 +176,14 @@ func main() {
 	}
 
 	// Get credentials from environment variables
+	prometheusUrl := os.Getenv("PROM_URL")
 	promUsername := os.Getenv("PROM_USERNAME")
 	promPassword := os.Getenv("PROM_PASSWORD")
 	if promUsername == "" || promPassword == "" {
 		log.Fatal("PROM_USERNAME and PROM_PASSWORD environment variables must be set")
 	}
 
-	err = prometheus.PushPrometheusMetrics(promUsername, promPassword, metrics, labels)
+	err = prometheus.PushPrometheusMetrics(prometheusUrl, promUsername, promPassword, metrics, labels)
 	if err != nil {
 		log.Fatalf("Error pushing metrics: %v", err)
 	}

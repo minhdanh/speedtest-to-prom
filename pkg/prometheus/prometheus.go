@@ -5,7 +5,6 @@ import (
 	"encoding/base64"
 	"fmt"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/golang/snappy"
@@ -19,7 +18,7 @@ type MetricValue struct {
 	Labels map[string]string
 }
 
-func PushPrometheusMetrics(promUsername, promPassword string, metrics map[string][]MetricValue, labels []*pb.Label) error {
+func PushPrometheusMetrics(prometheusUrl, promUsername, promPassword string, metrics map[string][]MetricValue, labels []*pb.Label) error {
 	credentials := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", promUsername, promPassword)))
 	timestamp := time.Now().UnixMilli()
 
@@ -71,7 +70,6 @@ func PushPrometheusMetrics(promUsername, promPassword string, metrics map[string
 	compressed := snappy.Encode(nil, data)
 
 	// Send request
-	prometheusUrl := os.Getenv("PROM_URL")
 	req, err := http.NewRequest("POST", prometheusUrl, bytes.NewReader(compressed))
 	if err != nil {
 		return fmt.Errorf("failed to create request: %v", err)
